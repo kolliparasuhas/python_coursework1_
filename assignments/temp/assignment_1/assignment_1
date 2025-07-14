@@ -1,0 +1,50 @@
+
+product_id = int(input("Enter Product ID: "))
+product_name = input("Enter Product Name: ")
+price = float(input("Enter Price: "))
+categories = input("Enter Categories (comma-separated): ").split(',')
+available_stock = int(input("Enter Available Stock: "))
+sold_stock = int(input("Enter Sold Stock: "))
+discount = float(input("Enter Discount Percentage: "))
+features = set(input("Enter Product Features (comma-separated): ").split(','))
+supplier_name = input("Enter Supplier Name: ")
+supplier_contact = input("Enter Supplier Contact Number: ")
+supplier_location = input("Enter Supplier Location: ")
+
+stock_details = (available_stock, sold_stock)
+supplier_details = {
+    "name": supplier_name,
+    "contact": supplier_contact,
+    "location": supplier_location
+}
+
+
+print("\n1. Using Comma Separation (sep=',')")
+print("Product ID, Name, Price:", product_id, product_name, price, sep=',')
+
+print("\n2. Using Percentage Formatting (% operator)")
+print("Product Discount: %.2f%%" % discount)
+
+print("\n3. Using f-strings (f"")")
+print(f"Product Name: {product_name}")
+print(f"Price: ₹{price}")
+print(f"Discount: {discount}%")
+print(f"Stock Available: {stock_details[0]} units")
+
+
+print("\n4. Using .format() method")
+print("Supplier Details: Name - {}, Contact - {}, Location - {}".format(
+    supplier_details["name"], supplier_details["contact"], supplier_details["location"]
+))
+
+
+online_product = {
+    "name": "Canon Pixma TS3370s Wireless All-in-One Printer",
+    "price": 4159.0,
+    "source": "Zepto/Online"
+}
+
+print("\n5. Online Product from Amazon:")
+print(f"Name: {online_product['name']}")
+print(f"Price: ₹{online_product['price']}")
+print(f"Source: {online_product['source']}")
