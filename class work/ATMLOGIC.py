@@ -8,24 +8,41 @@ data = {
 }
 
 acc_name = None
-def login(acc,pin):
+login_status = False
+def WElcome():
+    print("Welcome to the ATM System!".center(40,"-"))
+def menu():
+    print("ATM Menu".center(40, "-"))
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. View Transaction History")
+    print("5. Exit")
+    print("-" * 40)
+                               
+def login_status(acc,pin):
     if acc in data:
         if data[acc]['pin'] == pin:
             global acc_name
+            global login_status
             acc_name = acc
+            login_status=True
             print(f"Login successful for account {acc_name}.")
+            return True
         else:
             print("Incorrect PIN. Please try again.")
+            return False
     else:
         print("Account not found. Please try again.")
+        return False
 def check_balance():
-    if login_status():
+    if login_status and acc_name:
         print(f"Your current balance is: {data[acc_name]['balance']}")
     else:
         print("Please login first.")
 
 def deposit(amount):
-    if login_status():
+    if login_status and acc_name:
         if amount > 0:
             data[acc_name]['balance'] += amount
             data[acc_name]['history'].append(f"Deposited: {amount}")
@@ -52,4 +69,4 @@ def view_transaction():
             for transaction in data[acc_name]['history']:
                 print(transaction)
         else:
-            print("No transactions found.")
+            print("end of transactions found.")
